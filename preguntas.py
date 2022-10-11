@@ -7,10 +7,7 @@ Este archivo contiene las preguntas que se van a realizar en el laboratorio.
 Utilice los archivos `tbl0.tsv`, `tbl1.tsv` y `tbl2.tsv`, para resolver las preguntas.
 
 """
-import tabnanny
-from numpy import column_stack
 import pandas as pd
-from datetime import datetime as dt
  
 tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
 tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
@@ -253,5 +250,5 @@ def pregunta_13():
     Name: _c5b, dtype: int64
     """
     tblsln = tbl0[['_c0','_c1']].merge(tbl2[['_c0','_c5b']],on='_c0')
-    tblsln = tblsln[['_c1','_c5b']].groupby('_c1').sum()
+    tblsln = tblsln[['_c1','_c5b']].groupby('_c1').sum().reset_index()
     return tblsln.rename(columns={'_c5b':''})
