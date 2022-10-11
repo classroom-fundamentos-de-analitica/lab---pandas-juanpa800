@@ -252,4 +252,3 @@ def pregunta_13():
     tblsln = tbl0[['_c0','_c1']].merge(tbl2[['_c0','_c5b']],on='_c0')
     tblsln = tblsln[['_c1','_c5b']].groupby('_c1', as_index=True).sum()
     return tblsln.rename(columns={'_c5b':''})
-print(pregunta_13())
