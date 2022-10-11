@@ -178,11 +178,9 @@ def pregunta_10():
         dataframe = ':'.join(sorted( [str(i) for i in dataframe['_c2']]))
         return dataframe
 
-    tblsln = tbl0.groupby('_c1').apply(function).reset_index()
-    tblsln.columns = ['_c0','_c1']
-    tblsln.set_index('_c0', inplace=True)
-
-    return tblsln.reset_index()
+    tblsln = tbl0.groupby('_c1').apply(function).reset_index().set_index('_c1')
+    tblsln.columns = ['_c2']
+    return tblsln
 
 def pregunta_11():
     """
@@ -256,4 +254,4 @@ def pregunta_13():
     """
     tblsln = tbl0[['_c0','_c1']].merge(tbl2[['_c0','_c5b']],on='_c0')
     tblsln = tblsln[['_c1','_c5b']].groupby('_c1').sum()
-    return tblsln
+    return tblsln.rename(columns={'_c5b':''})
