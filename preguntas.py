@@ -179,8 +179,8 @@ def pregunta_10():
         return dataframe
 
     tblsln = tbl0.groupby('_c1').apply(function).reset_index()
-    tblsln.columns = ['_c1','_c2']
-    tblsln.set_index('_c1', inplace=True)
+    tblsln.columns = ['_c0','_c1']
+    tblsln.set_index('_c0', inplace=True)
 
     return tblsln.reset_index()
 
@@ -236,6 +236,7 @@ def pregunta_12():
         return dataframe
 
     tblsln = tbl2.groupby('_c0').apply(function).reset_index()
+    tblsln.columns = ['_c0','_c5']
     return tblsln
 
 
